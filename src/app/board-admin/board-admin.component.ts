@@ -43,8 +43,7 @@ deleteUser(iduser: any): void {
     .subscribe(
       response => {
         console.log(response);
-        this.router.navigate(['/admin']);
-      },
+        window.location.reload();},
       error => {
         console.log(error);
       });
