@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'show-post', component: PostDetailsComponent },
   { path: 'edit-post', component: EditPostComponent },
  
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
