@@ -1,0 +1,408 @@
+<!--
+<div class="col-md-12">
+    <div class="card card-container"> 
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+          <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username.errors.maxlength">
+              Username must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              name="firstname"
+              [(ngModel)]="form.firstname"
+              required
+              minlength="3"
+              maxlength="50"
+              #firstname="ngModel"
+            />
+            <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+              <div *ngIf="firstname.errors.required">firstname is required</div>
+              <div *ngIf="firstname.errors.minlength">
+                firstname must be at least 3 characters
+              </div>
+              <div *ngIf="firstname.errors.maxlength">
+                firstname must be at most 50 characters
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lastname"
+              [(ngModel)]="form.lastname"
+              required
+              minlength="3"
+              maxlength="50"
+              #lastname="ngModel"
+            />
+            <div class="alert-danger" *ngIf="lastname.errors && f.submitted">
+              <div *ngIf="lastname.errors.required">lastname is required</div>
+              <div *ngIf="lastname.errors.minlength">
+                lastname must be at least 3 characters
+              </div>
+              <div *ngIf="lastname.errors.maxlength">
+                lastname must be at most 50 characters
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="numTel">n°Tel</label>
+            <input
+              type="number"
+              class="form-control"
+              name="numTel"
+              [(ngModel)]="form.numTel"
+              required
+              min="10000000"
+              max="99999999"
+              #numTel="ngModel"
+            />
+            <div class="alert-danger" *ngIf="numTel.errors && f.submitted">
+              <div *ngIf="numTel.errors.required">n°Tel is required</div>
+              <div *ngIf="numTel.errors.min">
+                numTel must be at least 8 characters
+              </div>
+              <div *ngIf="numTel.errors.max">
+                numTel must be at most 8 characters
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="departement">Departement</label>
+            <input
+              list="departements"
+              class="form-control"
+              name="departement"
+              [(ngModel)]="form.departement"
+              required
+              #departement="ngModel"
+            />
+            <datalist id="departements">
+                <option value="RH">
+                <option value="Finance">
+                <option value="Dev">
+                <option value="Security">
+              </datalist>
+            <div class="alert-danger" *ngIf="departement.errors && f.submitted">
+              <div *ngIf="departement.errors.required">departement is required</div>
+              
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Sign Up</button>
+        </div>
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>
+-->
+
+<body id="kt_body" class="bg-body">
+  <!--begin::Main-->
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Authentication - Sign-up -->
+    <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(assets/media/illustrations/sketchy-1/14.png)">
+      <!--begin::Content-->
+      <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+        <!--begin::Logo-->
+        <a href="../../demo5/dist/index.html" class="mb-12">
+          <img alt="Logo" src="assets/media/logos/logo-1.svg" class="h-40px" />
+        </a>
+        <!--end::Logo-->
+        <!--begin::Wrapper-->
+        <div class="w-lg-600px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+          <!--begin::Form-->
+          <form class="form w-100"  id="kt_sign_up_form" *ngIf="!isSuccessful"
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate>
+            <!--begin::Heading-->
+            <div class="mb-10 text-center">
+              <!--begin::Title-->
+              <h1 class="text-dark mb-3">Create an Account</h1>
+              <!--end::Title-->
+              <!--begin::Link-->
+             
+              <!--end::Link-->
+            </div>
+     
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+          />
+          <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="username.errors.maxlength">
+              Username must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              name="firstname"
+              [(ngModel)]="form.firstname"
+              required
+              minlength="3"
+              maxlength="50"
+              #firstname="ngModel"
+            />
+            <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+              <div *ngIf="firstname.errors.required">firstname is required</div>
+              <div *ngIf="firstname.errors.minlength">
+                firstname must be at least 3 characters
+              </div>
+              <div *ngIf="firstname.errors.maxlength">
+                firstname must be at most 50 characters
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              name="lastname"
+              [(ngModel)]="form.lastname"
+              required
+              minlength="3"
+              maxlength="50"
+              #lastname="ngModel"
+            />
+            <div class="alert-danger" *ngIf="lastname.errors && f.submitted">
+              <div *ngIf="lastname.errors.required">lastname is required</div>
+              <div *ngIf="lastname.errors.minlength">
+                lastname must be at least 3 characters
+              </div>
+              <div *ngIf="lastname.errors.maxlength">
+                lastname must be at most 50 characters
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="numTel">n°Tel</label>
+            <input
+              type="number"
+              class="form-control"
+              name="numTel"
+              [(ngModel)]="form.numTel"
+              required
+              min="10000000"
+              max="99999999"
+              #numTel="ngModel"
+            />
+            <div class="alert-danger" *ngIf="numTel.errors && f.submitted">
+              <div *ngIf="numTel.errors.required">n°Tel is required</div>
+              <div *ngIf="numTel.errors.min">
+                numTel must be at least 8 characters
+              </div>
+              <div *ngIf="numTel.errors.max">
+                numTel must be at most 8 characters
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="departement">Departement</label>
+            <input
+              list="departements"
+              class="form-control"
+              name="departement"
+              [(ngModel)]="form.departement"
+              required
+              #departement="ngModel"
+            />
+            <datalist id="departements">
+                <option value="RH">
+                <option value="Finance">
+                <option value="Dev">
+                <option value="Security">
+              </datalist>
+            <div class="alert-danger" *ngIf="departement.errors && f.submitted">
+              <div *ngIf="departement.errors.required">departement is required</div>
+              
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Sign Up</button>
+        </div>
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+            
+         
+          <!--end::Form-->
+        </div>
+        <!--end::Wrapper-->
+      </div>
+      <!--end::Content-->
+      <!--begin::Footer-->
+      <div class="d-flex flex-center flex-column-auto p-10">
+        <!--begin::Links-->
+        <div class="d-flex align-items-center fw-bold fs-6">
+          <a href="https://keenthemes.com" class="text-muted text-hover-primary px-2">About</a>
+          <a href="mailto:support@keenthemes.com" class="text-muted text-hover-primary px-2">Contact</a>
+          <a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2">Contact Us</a>
+        </div>
+        <!--end::Links-->
+      </div>
+      <!--end::Footer-->
+    </div>
+    <!--end::Authentication - Sign-up-->
+  </div>
