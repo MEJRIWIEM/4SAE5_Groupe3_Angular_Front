@@ -99,5 +99,9 @@ export class EmployeesListComponent implements OnInit {
         this.selectedFiles = undefined;
       }
     }
+    EmployeeList():void{
+      this.router.navigate(['/admin']);
+    }
+    
 
 }
