@@ -25,6 +25,7 @@ import { PostService } from './_services/post.service';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -55,7 +56,8 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     FormsModule,
     HttpClientModule,
     AppMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule,
   ],
   providers: [
     authInterceptorProviders,
