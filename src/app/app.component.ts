@@ -45,5 +45,11 @@ export class AppComponent implements OnInit {
     
     this.router.navigate(['/login']);
     
+   
   }
+  f(): void {
+    
+    this.router.navigate(['/forum']);
+  
+}
 }

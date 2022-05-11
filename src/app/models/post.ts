@@ -1,3 +1,4 @@
+import { Likes } from "./likes";
 import { User } from "./user.model";
 
 export interface Post{
@@ -7,5 +8,6 @@ export interface Post{
     timestamp: Date;
     fileURL: string;
     user: User;
-    file_id:number;
+    fileDB:any;
+    likes:Likes[];
 }

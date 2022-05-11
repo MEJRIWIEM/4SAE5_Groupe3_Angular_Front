@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { content } from '@syncfusion/ej2/grids';
 import { Post } from '../models/post';
 import { PostService } from '../_services/post.service';
 
@@ -13,7 +14,10 @@ import { PostService } from '../_services/post.service';
 })
 export class AddPostComponent implements OnInit {
 
+  public fd = new FormData();
+  public s!: String ;
   public post!: Post;
+  public fileUser !: File;
   constructor(private router: Router,public postService : PostService) { }
 
   ngOnInit(): void {
@@ -25,17 +29,15 @@ export class AddPostComponent implements OnInit {
   }
   public onAddPost(addForm : NgForm): void{
 
-    this.post = addForm.value;
-    this.post.fileURL="";
-    this.post.file_id=1;
+    
     this.postService.addPost(addForm.value).subscribe(
       (response : Post)=> {
         console.log(response);
         console.log("clicked show success!");
       },
-    /*  (error: HttpErrorResponse)=>{
+     (error: HttpErrorResponse)=>{
         alert(error.message);
-      }*/
+      }
       
      
     )
@@ -43,5 +45,26 @@ export class AddPostComponent implements OnInit {
 
     console.log("clicked show success!");
   }
+  public onAddPost2(addForm : NgForm): void{
+
+    const df : FormData = new FormData();
+    df.append('file',this.fileUser);
+    df.append('post',JSON.stringify(addForm.value));
+    console.log(JSON.stringify(addForm.value));
+    console.log(this.fileUser);
+    this.postService.addPost2(df).subscribe(data=>console.log(data));
+    this.router.navigate(['/forum']);
+    console.log("clicked show success!");
+    
+  }
+
+  onFileChanged(event : any){
+    const file = event.target.files[0];
+    this.fileUser = file;
+    console.log("file is : ", this.fileUser);
+
+  }
+  
+ 
 
 }

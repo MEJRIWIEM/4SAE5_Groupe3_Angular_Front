@@ -27,7 +27,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LinkedinComponent } from './linkedin/linkedin.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -60,6 +60,7 @@ import { LinkedinComponent } from './linkedin/linkedin.component';
     AppMaterialModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     authInterceptorProviders,
