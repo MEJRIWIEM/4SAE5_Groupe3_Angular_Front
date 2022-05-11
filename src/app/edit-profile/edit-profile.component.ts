@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RowHistoryFormat } from '@syncfusion/ej2/documenteditor';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
@@ -24,7 +25,7 @@ export class EditProfileComponent implements OnInit {
       departement: null
   };
 
-  constructor(private token: TokenStorageService,private userService: UserService) { }
+  constructor(private token: TokenStorageService,private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
@@ -45,6 +46,7 @@ export class EditProfileComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['/profile']);
       },
       err => {
         this.errorMessage = err.error.message;
