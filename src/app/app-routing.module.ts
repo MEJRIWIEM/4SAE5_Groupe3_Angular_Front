@@ -16,6 +16,7 @@ import { ForumComponent } from './forum/forum.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { LinkedinComponent } from './linkedin/linkedin.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,8 +35,9 @@ const routes: Routes = [
   { path: 'add-post', component: AddPostComponent },
   { path: 'show-post', component: PostDetailsComponent },
   { path: 'edit-post', component: EditPostComponent },
- 
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'linkedinLogin', component: LinkedinComponent },
+  
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
