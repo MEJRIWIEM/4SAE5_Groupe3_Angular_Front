@@ -47,7 +47,7 @@
         <!--begin::Post-->
         <div class="post" id="kt_post">
             <!--begin:Form-->
-            <form #addForm="ngForm" (ngSubmit)="onAddPost(addForm)" id="kt_devs_ask_form" class="form" action="#" data-kt-redirect="../../demo5/dist/apps/devs/question.html">
+            <form #addForm="ngForm" (ngSubmit)="onAddPost2(addForm)" id="kt_devs_ask_form" class="form" action="#" data-kt-redirect="../../demo5/dist/apps/devs/question.html">
                 <!--begin::Input group-->
                 <div class="d-flex flex-column mb-8 fv-row">
                     <!--begin::Label-->
@@ -79,19 +79,12 @@
              
                     <!--end::Formating info-->
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card h-100 flex-center bg-light-primary border-primary border border-dashed p-8">
-                    <!--begin::Image-->
-                    <img src=""alt="" />
-                    <!--end::Image-->
-                    <!--begin::Link-->
-                    <a href="#" class="text-hover-primary fs-5 fw-bolder mb-2">File Upload</a>
-                    <!--end::Link-->
-                    <!--begin::Description-->
-                    <div class="fs-7 fw-bold text-gray-400">Drag and drop files here</div>
-                    <!--end::Description-->
-                </div>
-            </div>
+                    <div>
+                    </div>
+                   
+                  
+                <input type="file" (change)="onFileChanged($event)">
+                <br>
                 &nbsp;
                 <!--end::Input group-->
                 <!--begin::Input group-->

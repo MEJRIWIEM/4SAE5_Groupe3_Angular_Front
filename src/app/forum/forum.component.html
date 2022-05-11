@@ -13,7 +13,7 @@
                     <h1 class="d-flex align-items-center my-1">
                         <span class="text-dark fw-bolder fs-1">All Posts</span>
                         <!--begin::Description-->
-                        <small class="text-muted fs-6 fw-bold ms-1">(6,299)</small>
+                        <small class="text-muted fs-6 fw-bold ms-1">({{n}})</small>
                         <!--end::Description-->
                     </h1>
                     <!--end::Title-->
@@ -121,7 +121,7 @@
             <!--begin::Post-->
             <div class="post" id="kt_post">
                 <!--begin::Questions-->
-                <div class="mb-10" *ngFor="let p of posts">
+                <div class="mb-10" *ngFor="let p of posts  |filter:term">
                     <!--begin::Question-->
                     <div class="mb-0">
                         <!--begin::Head-->
@@ -130,6 +130,8 @@
                             <a (click)="showPost(p.idPost)" class="fs-2 fw-bolder text-gray-900 text-hover-primary me-1">{{p.title}}</a>
                             <!--end::Title-->
                             <!--begin::Icons-->
+                            <input type="hidden" class="form-control" ngModel  name="post" />
+
                             <div class="d-flex align-items-center">
                                 <span class="ms-1" data-bs-toggle="tooltip" title="New question">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen045.svg-->
@@ -157,15 +159,17 @@
                         </div>
                         <!--end::Head-->
                         <!--begin::Summary-->
-                        <div class="fs-base fw-normal text-gray-700 mb-4">{{p.text}}</div>
+                        <div class="fs-base fw-normal text-gray-700 mb-4 " >{{ellipsify(p.text)}}</div>
                         <!--end::Summary-->
                         <!--begin::Foot-->
+                        <div class="bgi-no-repeat bgi-size-cover rounded min-h-250px mb-5" style="background-image:url({{p.fileURL}});"></div>
+
                         <div class="d-flex flex-stack flex-wrap">
                             <!--begin::Author-->
                             <div class="d-flex align-items-center py-1">
                                 <!--begin::Symbol-->
                                 <div class="symbol symbol-35px me-2">
-                                    <div class="symbol-label bg-light-success fs-3 fw-bold text-success text-uppercase">J</div>
+                                    <div class="symbol-label bg-light-success fs-3 fw-bold text-success text-uppercase">{{get(p.user?.firstname)}}</div>
                                 </div>
                                 <!--end::Symbol-->
                                 <!--begin::Name-->
@@ -179,20 +183,12 @@
                             <!--begin::Info-->
                             <div class="d-flex align-items-center py-1">
                                 <!--begin::Answers-->
-                                <a href="../../demo5/dist/apps/devs/question.html#answers" class="btn btn-sm btn-outline btn-outline-dashed btn-outline-default px-4 me-2">16 Comments</a>
                                 <!--end::Answers-->
                                 <!--begin::Tags-->
                                 <!--end::Tags-->
                                 <!--begin::Upvote-->
-                                <a href="#" class="btn btn-sm btn-flex btn-light px-3" data-bs-toggle="tooltip" title="Upvote this question" data-bs-dismiss="click">23
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr062.svg-->
-                                <span class="svg-icon svg-icon-7ms-2 me-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path opacity="0.5" d="M13 9.59998V21C13 21.6 12.6 22 12 22C11.4 22 11 21.6 11 21V9.59998H13Z" fill="black" />
-                                        <path d="M5.7071 7.89291C5.07714 8.52288 5.52331 9.60002 6.41421 9.60002H17.5858C18.4767 9.60002 18.9229 8.52288 18.2929 7.89291L12.7 2.3C12.3 1.9 11.7 1.9 11.3 2.3L5.7071 7.89291Z" fill="black" />
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon--></a>
+                               
+                                <!--end::Svg Icon-->
                                 <!--end::Upvote-->
                             </div>
                             <!--end::Info-->
@@ -267,7 +263,7 @@
             <!--end::Svg Icon-->
             <!--end::Icon-->
             <!--begin::Input-->
-            <input type="text" class="form-control bg-transparent ps-13 fs-7 h-40px" name="search" value="" placeholder="Search" />
+            <input type="text" class="form-control bg-transparent ps-13 fs-7 h-40px" name="search" [(ngModel)]="term" placeholder="Search" />
             <!--end::Input-->
         </form>
         <!--end::Quick Search-->
@@ -276,7 +272,7 @@
             <!--begin::Header-->
             <div class="card-header align-items-center border-0">
                 <!--begin::Title-->
-                <h3 class="card-title fw-bolder text-gray-900 fs-3">Popular Posts</h3>
+                <h3 class="card-title fw-bolder text-gray-900 fs-3">Popular Post</h3>
                 <!--end::Title-->
             </div>
             <!--end::Header-->
@@ -295,7 +291,7 @@
                     <!--end::Svg Icon-->
                     <!--end::Arrow-->
                     <!--begin::Title-->
-                    <a href="../../demo5/dist/apps/devs/question.html" class="text-gray-700 text-hover-primary fs-6 fw-bold">How to use Metrponic with Django Framework ?</a>
+                    <a (click)="showPost(popular.idPost)" class="text-gray-700 text-hover-primary fs-6 fw-bold">{{popular.title}}</a>
                     <!--end::Title-->
                 </div>
                 <!--end::Item-->
@@ -314,14 +310,73 @@
             </div>
             <!--end: Card Body-->
         </div>
+        
         <!--end::Popular Questions-->
-        <!--begin::Popular Questions-->
-    
+        <!--begin::Notifications-->
+        <div class="card  mb-5 mb-lg-10 shadow-none border-0 " >
+            <!--begin::Header-->
+            <div class="card-header align-items-center border-0"  (click)="myFunction()" >
+                <!--begin::Title-->
+                <h3 class="card-title fw-bolder text-gray-900 fs-3">Notifications &nbsp;
+                <span class="svg-icon svg-icon-warning svg-icon-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black" />
+                        <rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black" />
+                        <rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black" />
+                    </svg>
+                </span></h3>
+                <!--end::Title-->
+            </div>
+            <!--end::Header-->
+            <!--begin::Body-->
+            <div class="card-body pt-0" id="myDIV">
+                <!--begin::Item-->
+              <!--begin::Item-->
+             
+            <div class="d-flex flex-stack py-4"  *ngFor="let n of notifs" >
+                <!--begin::Section-->
+                <div class="d-flex align-items-center me-2" *ngIf="likeOrComment(n)  ; else myFlagFalse;">
+                    <!--begin::Code-->
+                    <span class=" badge badge-light-danger me-4" style="width: #120;">{{n}}</span>
+                    <!--end::Code-->
+                    <!--begin::Title-->
+                    <!--end::Title-->
+                </div>
+                <ng-template #myFlagFalse>
+                <div class="d-flex align-items-center me-2">
+                    <!--begin::Code-->
+                    <span class="badge badge-light-success me-4 "  style="width: #120;">{{n}}</span>
+                    <!--end::Code-->
+                    <!--begin::Title-->
+                    <!--end::Title-->
+                </div>
+            </ng-template>
+                <!--end::Section-->
+                <!--begin::Label-->
+                <!--end::Label-->
+            </div>
+            <!--end::Item-->
+                <!--end::Item-->
+                <!--begin::Item-->
+                
+                <!--end::Item-->
+                <!--begin::Item-->
+            
+                <!--end::Item-->
+                <!--begin::Item-->
+                
+                <!--end::Item-->
+                <!--begin::Item-->
+                
+                <!--end::Item-->
+            </div>
+            <!--end: Card Body-->
+        </div>
             <!--end::Header-->
             <!--begin::Body-->
             
             <!--end: Card Body-->
         </div>
         
-        <!--end::Popular Questions-->
+        <!--end::Notifications-->
     </div>
