@@ -216,7 +216,7 @@
             </div>
      
         <div class="form-group">
-          <label for="username">Username</label>
+          <label class="form-label fs-6 fw-bolder text-dark" for="username">Username</label>
           <input
             type="text"
             class="form-control"
@@ -238,7 +238,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
+          <label  class="form-label fs-6 fw-bolder text-dark" for="email">Email</label>
           <input
             type="email"
             class="form-control"
@@ -256,7 +256,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label  class="form-label fs-6 fw-bolder text-dark" for="password">Password</label>
           <input
             type="password"
             class="form-control"
@@ -274,7 +274,7 @@
           </div>
         </div>
         <div class="form-group">
-            <label for="firstname">Firstname</label>
+            <label  class="form-label fs-6 fw-bolder text-dark" for="firstname">Firstname</label>
             <input
               type="text"
               class="form-control"
@@ -285,7 +285,7 @@
               maxlength="50"
               #firstname="ngModel"
             />
-            <div class="alert-danger" *ngIf="firstname.errors && f.submitted">
+            <div  class="alert-danger" *ngIf="firstname.errors && f.submitted">
               <div *ngIf="firstname.errors.required">firstname is required</div>
               <div *ngIf="firstname.errors.minlength">
                 firstname must be at least 3 characters
@@ -296,8 +296,8 @@
             </div>
           </div>
           
-          <div class="form-group">
-            <label for="lastname">Lastname</label>
+          <div class="form-label fs-6 fw-bolder text-dark" class="form-group">
+            <label class="form-label fs-6 fw-bolder text-dark" for="lastname">Lastname</label>
             <input
               type="text"
               class="form-control"
@@ -320,7 +320,7 @@
           </div>
 
           <div class="form-group">
-            <label for="numTel">n°Tel</label>
+            <label class="form-label fs-6 fw-bolder text-dark" for="numTel">n°Tel</label>
             <input
               type="number"
               class="form-control"
@@ -343,7 +343,7 @@
           </div>
 
           <div class="form-group">
-            <label for="departement">Departement</label>
+            <label class="form-label fs-6 fw-bolder text-dark" for="departement">Departement</label>
             <input
               list="departements"
               class="form-control"
@@ -379,7 +379,7 @@
 
 
         <div class="form-group">
-          <button class="btn btn-primary btn-block">Sign Up</button>
+          <button style="margin-top: 50px" class="btn btn-lg btn-primary w-100 mb-5">Sign Up</button>
         </div>
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
           Signup failed!<br />{{ errorMessage }}
