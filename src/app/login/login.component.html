@@ -79,7 +79,7 @@
 </div>
 -->
 
-
+<body id="kt_body" class="bg-body">
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Authentication - Sign-in -->
 			<div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(assets/media/illustrations/sketchy-1/14.png)">
@@ -96,15 +96,17 @@
 						<form
       *ngIf="!isLoggedIn"
       name="form"
+      class="form w-100"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
       novalidate
     >
       <div class="form-group">
-        <label for="username">Username</label>
+        <label class="form-label fs-6 fw-bolder text-dark" for="username">Username</label>
+        
         <input
           type="text"
-          class="form-control"
+          class="form-control form-control-lg form-control-solid"
           name="username"
           [(ngModel)]="form.username"
           required
@@ -119,10 +121,10 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label class="form-label fs-6 fw-bolder text-dark" for="password">Password</label>
         <input
           type="password"
-          class="form-control"
+          class="form-control form-control-lg form-control-solid"
           name="password"
           [(ngModel)]="form.password"
           required
@@ -140,10 +142,13 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block ">
+      <div class="text-center">
+        
+        <button style="margin-top: 50px" class="btn btn-lg btn-primary w-100 mb-5">
           Login
         </button>
+
+       
 
         <div class="d-flex align-items-center mb-10">
           <div class="border-bottom border-gray-300 mw-50 w-100"></div>
@@ -151,7 +156,7 @@
           <div class="border-bottom border-gray-300 mw-50 w-100"></div>
         </div>
 
-        <button class="btn btn-primary btn-block" (click)="forgetPassword()">
+        <button class="btn btn-lg btn-primary w-100 mb-5" (click)="forgetPassword()">
           Forget Password
         </button>
 
@@ -161,7 +166,7 @@
           <div class="border-bottom border-gray-300 mw-50 w-100"></div>
         </div>
 
-        <button class="btn btn-primary btn-block" (click)="register()">
+        <button class="btn btn-lg btn-primary w-100 mb-5" (click)="register()">
           Create a new account 
         </button>
         
@@ -171,7 +176,7 @@
           <div class="border-bottom border-gray-300 mw-50 w-100"></div>
         </div>
 
-        <button class="btn btn-primary btn-block" (click)="onNavigate()">
+        <button class="btn btn-lg btn-primary w-100 mb-5" (click)="onNavigate()">
           Login with Linkedin
         </button>
         
@@ -206,4 +211,6 @@
 			</div>
 			<!--end::Authentication - Sign-in-->
 		</div>
+  
+</body>
 		
