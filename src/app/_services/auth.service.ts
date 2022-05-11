@@ -16,6 +16,14 @@ export class AuthService {
       password
     }, httpOptions);
   }
+
+  loginLinkedin(code: string): Observable<any> {
+    return this.http.post(AUTH_API + 'getToken', {
+      code,
+    }, httpOptions);
+  }
+
+
   register(username: string, email: string, password: string,firstname:string,lastname:string,numTel:number,departement:string): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username,
