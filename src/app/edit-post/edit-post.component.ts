@@ -13,6 +13,8 @@ import { PostService } from '../_services/post.service';
 export class EditPostComponent implements OnInit {
 
   public editpost !: Post;
+  public fileUser !: File;
+
   constructor(private router: Router,public postService : PostService) {
   
    }
@@ -27,7 +29,6 @@ export class EditPostComponent implements OnInit {
     
   }
   public editPost(post : Post): void{
-
     
     this.postService.editPost(post).subscribe(
       (response : Post)=> {
@@ -44,6 +45,7 @@ export class EditPostComponent implements OnInit {
 
     console.log("clicked show success!");
   }
+ 
 
 
 }

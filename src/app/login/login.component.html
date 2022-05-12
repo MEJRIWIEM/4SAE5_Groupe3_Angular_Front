@@ -100,8 +100,17 @@
       #f="ngForm"
       novalidate
     >
+    <div class="text-center mb-10">
+      <!--begin::Title-->
+      <h1 class="text-dark mb-3">Sign In WeCare</h1>
+      <!--end::Title-->
+      <!--begin::Link-->
+      <div class="text-gray-400 fw-bold fs-4">New Here?
+      <a (click)="register()" class="link-primary fw-bolder">Create an Account</a></div>
+      <!--end::Link-->
+    </div>
       <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username"  class="form-label fs-6 fw-bolder text-dark">Username</label>
         <input
           type="text"
           class="form-control"
@@ -118,8 +127,9 @@
           Username is required!
         </div>
       </div>
+      <br>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password" class="form-label fs-6 fw-bolder text-dark">Password</label>
         <input
           type="password"
           class="form-control"
@@ -140,8 +150,9 @@
           </div>
         </div>
       </div>
+      <br>
       <div class="form-group">
-        <button class="btn btn-primary btn-block ">
+        <button class="btn btn-lg btn-primary w-100 mb-5">
           Login
         </button>
 
@@ -151,18 +162,15 @@
           <div class="border-bottom border-gray-300 mw-50 w-100"></div>
         </div>
 
-        <button class="btn btn-primary btn-block" (click)="forgetPassword()">
-          Forget Password
+        <button class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5" (click)="forgetPassword()">
+          Forgot Password?
         </button>
-
-        <div class="d-flex align-items-center mb-10">
-          <div class="border-bottom border-gray-300 mw-50 w-100"></div>
-          <span class="fw-bold text-gray-400 fs-7 mx-2">OR</span>
-          <div class="border-bottom border-gray-300 mw-50 w-100"></div>
-        </div>
-
-        <button class="btn btn-primary btn-block" (click)="register()">
-          Create a new account 
+        <br>
+       
+       
+       
+        <button class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5" (click)="onNavigate()">
+          Login with Linkedin
         </button>
         
       </div>

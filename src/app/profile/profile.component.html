@@ -194,12 +194,13 @@
                             <input type="file" (change)="selectFile($event)" />
                           </label>
                         </div>
+                        <br>
                         <div class="center">
                           <button class="btn btn-primary align-self-center" [disabled]="!selectedFiles" (click)="upload()">
                             Upload
                           </button>
             
-                          
+                          &nbsp;&nbsp;
             
                           <button class="btn btn-primary align-self-center" (click)="changePassword()">
                             Change Password 
@@ -238,6 +239,7 @@
                 <!--end::Card title-->
                 <!--begin::Action-->
                 <button class="btn btn-primary align-self-center" (click)="editProfile()">Edit Profile</button>
+                
                 
                 <!--end::Action-->
               </div>

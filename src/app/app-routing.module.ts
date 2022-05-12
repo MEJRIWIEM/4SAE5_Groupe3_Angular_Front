@@ -16,6 +16,7 @@ import { ForumComponent } from './forum/forum.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+
 import {CollaboratorComponent} from "./collaborators/collaborator/collaborator.component";
 import {CollaboratorFormComponent} from "./collaborators/collaborator-form/collaborator-form.component";
 import {EditCollaboratorComponent} from "./collaborators/edit-collaborator/edit-collaborator.component";
@@ -26,6 +27,9 @@ import {AdvertisingComponent} from "./advertisings/advertising/advertising.compo
 import {AdvertisingFormComponent} from "./advertisings/advertising-form/advertising-form.component";
 import {EditAdvertisingComponent} from "./advertisings/edit-advertising/edit-advertising.component";
 import {DateComComponent} from "./date-com/date-com.component";
+
+import { LinkedinComponent } from './linkedin/linkedin.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -44,6 +48,7 @@ const routes: Routes = [
   { path: 'add-post', component: AddPostComponent },
   { path: 'show-post', component: PostDetailsComponent },
   { path: 'edit-post', component: EditPostComponent },
+
 
   {path:'col', component:DateComComponent},
 
@@ -64,6 +69,10 @@ const routes: Routes = [
 
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+  { path: 'linkedinLogin', component: LinkedinComponent },
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

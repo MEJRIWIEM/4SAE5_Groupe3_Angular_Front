@@ -51,7 +51,8 @@ import { OfferFormComponent } from './offer/offer-form/offer-form.component';
 import { OfferEditComponent } from './offer/offer-edit/offer-edit.component';
 import { DateComComponent } from './date-com/date-com.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { LinkedinComponent } from './linkedin/linkedin.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddPostComponent,
     PostDetailsComponent,
     EditPostComponent,
+
     AdvertisingComponent,
     AdvertisingFormComponent,
     EditAdvertisingComponent,
@@ -83,6 +85,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     OfferFormComponent,
     OfferEditComponent,
     DateComComponent,
+
+
+    LinkedinComponent,
+
 
   ],
   imports: [
@@ -103,7 +109,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     //NgbModule,
     IgxDateRangePickerModule,
     FlashMessagesModule.forRoot(),
-    NgbModule
+    NgbModule,
+
+    Ng2SearchPipeModule
+
   ],
   providers: [
     authInterceptorProviders,

@@ -81,6 +81,7 @@ export class EmployeesListComponent implements OnInit {
             (event: any) => {
               if (event.type === HttpEventType.UploadProgress) {
                 this.progress = Math.round(100 * event.loaded / event.total);
+                window.location.reload();
               } else if (event instanceof HttpResponse) {
                 this.message = event.body.message;
               }
