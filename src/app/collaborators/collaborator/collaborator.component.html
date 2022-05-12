@@ -1,0 +1,668 @@
+
+
+
+<div class="d-flex flex-column flex-root" *ngIf="showAdminBoard">
+    <!--begin::Page-->
+    <div class="page d-flex flex-column flex-column-fluid">
+        <!--begin::Header-->
+
+        <!--end::Header-->
+        <!--begin::Container-->
+        <div id="kt_content_container" class="d-flex flex-column-fluid align-items-stretch container-xxl">
+            <!--begin::Aside-->
+
+            <!--end::Aside-->
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid mt-5 mt-lg-10" id="kt_wrapper">
+                <!--begin::Content-->
+                <div class="content flex-column-fluid" id="kt_content">
+                    <!--begin::Toolbar-->
+                    <div class="toolbar d-flex flex-stack flex-wrap mb-5 mb-lg-7" id="kt_toolbar">
+                        <!--begin::Page title-->
+                        <div class="page-title d-flex flex-column py-1">
+                            <!--begin::Title-->
+                            <h1 class="d-flex align-items-center my-1">
+                                <span class="text-dark fw-bolder fs-1">Our Collaborator List</span>
+                            </h1>
+
+
+                            <!--end::Title-->
+                            <!--begin::Breadcrumb-->
+
+                            <!--end::Breadcrumb-->
+                        </div>
+                        <!--end::Page title-->
+                        <!--begin::Actions-->
+                        <div class="d-flex align-items-center py-1">
+                            <!--begin::Button-->
+
+                            <a class="btn btn-flex btn-sm btn-success fw-bolder border-0 fs-6 h-40px" data-bs-toggle="modal" data-bs-target="#kt_modal_create_campaign" id="kt_toolbar_primary_button" routerLink="/addCollaborator"  >Create New Collaborator </a>
+
+
+
+
+                            <!--end::Button-->
+                        </div>
+                        <!--end::Actions-->
+                    </div>
+                    <!--end::Toolbar-->
+                    <!--begin::Post-->
+                    <div class="post" id="kt_post">
+                        <!--begin::Card-->
+                        <div class="card">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0 pt-6">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <!--begin::Search-->
+                                    <div class="d-flex align-items-center position-relative my-1">
+                                        <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                                        <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor"></rect>
+                        <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor"></path>
+                      </svg>
+                    </span>
+                                        <!--end::Svg Icon-->
+                                        <input type="text" data-kt-subscription-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Subscriptions">
+                                    </div>
+                                    <!--end::Search-->
+                                </div>
+                                <!--begin::Card title-->
+                                <!--begin::Card toolbar-->
+
+                                <!--end::Card toolbar-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Table-->
+                                <div id="kt_subscriptions_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="table-responsive"><table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer" id="kt_subscriptions_table">
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <!--begin::Table row-->
+                                    <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                                        <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_subscriptions_table" rowspan="1" colspan="1" aria-label="Customer: activate to sort column ascending" style="width: 141.922px;">Name of Collaborator</th>
+                                        <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_subscriptions_table" rowspan="1" colspan="1" aria-label="Customer: activate to sort column ascending" style="width: 141.922px;">Sector</th>
+                                        <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_subscriptions_table" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 140.078px;"> Address Email</th>
+                                        <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_subscriptions_table" rowspan="1" colspan="1" aria-label="Billing: activate to sort column ascending" style="width: 159.25px;">Address</th>
+                                        <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_subscriptions_table" rowspan="1" colspan="1" aria-label="Product: activate to sort column ascending" style="width: 148.172px;">Advertising</th>
+                                        <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_subscriptions_table" rowspan="1" colspan="1" aria-label="Product: activate to sort column ascending" style="width: 148.172px;">Offers</th>
+                                        <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_subscriptions_table" rowspan="1" colspan="1" aria-label="Customer: activate to sort column ascending" style="width: 1000px;">Action</th>
+                                    </tr>
+                                    <!--end::Table row-->
+
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody class="text-gray-600 fw-bold">
+                                    <tr class="odd" *ngFor="let user of collaboratorsList | paginate :{  itemsPerPage:6,currentPage: page,totalItems: count };
+                                   ">
+                                        <!--begin::Checkbox-->
+                                        <!--end::Checkbox-->
+                                        <!--begin::Customer=-->
+                                        <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="symbol symbol-50px me-5">
+                                <span class="symbol-label bg-light">
+                                    <img src="http://localhost:8089/SpringMVC/files/{{user.fileDB?.id}}"class="h-75 align-self-end" alt="" />
+                                </span>
+                                            </div>
+                                            <div class="d-flex justify-content-start flex-column">
+                                                <span class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ user.name }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                        <td>
+                                            <span class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{ user.typeCollaborator}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{ user.email}}</span>
+                                        </td>
+                                        <td>
+                                            <span href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{ user.address }}</span>
+                                        </td>
+                                        <td class="text-end">
+                                            <a [routerLink]="['/advertising/', user.idCollaborator]" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
+                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                <span class="svg-icon svg-icon-2">
+																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																						<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
+																						<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
+																					</svg>
+																				</span>
+                                                <!--end::Svg Icon-->
+                                            </a>
+                                        </td>
+                                        <td class="text-end">
+                                            <a [routerLink]="['/offer/', user.idCollaborator]" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
+                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                                <span class="svg-icon svg-icon-2">
+																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																						<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
+																						<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
+																					</svg>
+																				</span>
+                                                <!--end::Svg Icon-->
+                                            </a>
+                                        </td>
+                                        <td class="text-end">
+                                            <a [routerLink]="['/editCollaborator/', user.idCollaborator, 'edit']" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                <span class="svg-icon svg-icon-3">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black" />
+																		<path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black" />
+																	</svg>
+																</span>
+                                                <!--end::Svg Icon-->
+                                            </a>
+                                            <a type="button" (click)="deleteCollaborator(user.idCollaborator)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                                <span class="svg-icon svg-icon-3">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
+																		<path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
+																		<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
+																	</svg>
+																</span>
+                                                <!--end::Svg Icon-->
+                                            </a>
+                                        </td>
+                                        <!--end::Customer=-->
+                                        <!--begin::Status=-->
+
+                                    </tr></tbody>
+                                    <!--end::Table body-->
+                                </table>
+                                </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                                        </div>
+                                        <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="kt_subscriptions_table_paginate">
+                                                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                                                </pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Table-->
+                                </div>
+                                <!--end::Card body-->
+                            </div>
+                            <!--end::Card-->
+                            <!--begin::Modals-->
+                            <!--begin::Modal - Adjust Balance-->
+                            <!--end::Modal - New Card-->
+                            <!--end::Modals-->
+                        </div>
+                        <!--end::Post-->
+                    </div>
+                    <!--end::Content-->
+                    <!--begin::Footer-->
+                    <div class="footer pt-10 pb-5 d-flex flex-column flex-md-row flex-stack" id="kt_footer">
+                        <!--begin::Copyright-->
+                        <div class="text-dark order-2 order-md-1">
+                            <span class="text-muted fw-bold me-1">2022©</span>
+                            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+                        </div>
+                        <!--end::Copyright-->
+                        <!--begin::Menu-->
+                        <ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
+                            <li class="menu-item">
+                                <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link ps-2 pe-0">Purchase</a>
+                            </li>
+                        </ul>
+                        <!--end::Menu-->
+                    </div>
+                    <!--end::Footer-->
+                </div>
+                <!--end::Wrapper-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Page-->
+    </div>
+</div>
+
+
+
+
+<div id="kt_content_container" class="d-flex flex-column-fluid align-items-stretch container-xxl" *ngIf="showUserCol">
+    <!--begin::Aside-->
+    <div id="kt_aside" class="aside" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '225px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle" data-kt-sticky="true" data-kt-sticky-name="aside-sticky" data-kt-sticky-offset="{default: false, lg: '1px'}" data-kt-sticky-width="{lg: '225px'}" data-kt-sticky-left="auto" data-kt-sticky-top="94px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95">
+        <!--begin::Aside nav-->
+        <div class="hover-scroll-overlay-y my-5 my-lg-5 w-100 ps-4 ps-lg-0 pe-4 me-1" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_header" data-kt-scroll-wrappers="#kt_aside" data-kt-scroll-offset="5px">
+            <!--begin::Menu-->
+            <div  class="menu menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-6 menu-rounded w-100" id="#kt_aside_menu" data-kt-menu="true">
+                <!--begin::Heading-->
+                <div class="menu-item" >
+                    <div class="menu-content pb-2">
+                        <span class="menu-section text-muted text-uppercase fs-7 fw-bolder">Public</span>
+
+                    </div>
+                </div>
+                <!--end::Heading-->
+                <!--begin::Menu item-->
+
+                <!--end::Menu item-->
+                <!--begin::Menu item-->
+
+                <!--end::Menu item-->
+                <!--begin::Menu item-->
+
+
+                <!--end::Heading-->
+            </div>
+            <!--end::Menu-->
+        </div>
+        <!--end::Aside nav-->
+    </div>
+    <!--end::Aside-->
+    <!--begin::Wrapper-->
+    <div class="wrapper d-flex flex-column flex-row-fluid mt-5 mt-lg-10" id="kt_wrapper">
+        <!--begin::Content-->
+        <div class="content flex-column-fluid" id="kt_content">
+            <!--begin::Toolbar-->
+            <div class="toolbar d-flex flex-stack flex-wrap mb-5 mb-lg-7" id="kt_toolbar">
+                <!--begin::Page title-->
+                <div class="slider">
+                    <div class="slide-track" *ngFor="let user of collaboratorsList">
+                        <div class="slide">
+                            <img src="http://localhost:8089/SpringMVC/files/{{user.fileDB?.id}}" alt="image"  >
+                        </div>
+                        <div class="slide">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                        </div>
+                        <div class="slide">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                        </div>
+                        <div class="slide">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+                        </div>
+                        <div class="slide">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                        </div>
+                        <div class="slide">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <!--end::Actions-->
+            </div>
+            <!--end::Toolbar-->
+            <!--begin::Post-->
+            <div class="post" id="kt_post">
+                <!--begin::Home card-->
+                <div class="card">
+                    <!--begin::Body-->
+                    <div class="card-body p-lg-20">
+                        <!--begin::Section-->
+                        <div class="mb-17">
+                            <!--begin::Title-->
+                            <div class="mb-17">
+                                <!--begin::Content-->
+                                <div class="d-flex flex-stack mb-5">
+                                    <!--begin::Title-->
+                                    <h3 class="text-black">Our Collaborators</h3>
+                                        <!--end::Title-->
+                                        <!--begin::Link-->
+                                        <a href="#" class="fs-6 fw-bold link-primary">View All Offers</a>
+                                        <!--end::Link-->
+                                </div>
+                                <!--end::Content-->
+                                <!--begin::Separator-->
+                                <div class="separator separator-dashed mb-9"></div>
+                                <!--end::Separator-->
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    <!--begin::Col-->
+                                    <div class="col-md-4"  *ngFor="let user of collaboratorsList">
+                                        <!--begin::Hot sales post-->
+                                        <div class="card-xl-stretch me-md-6">
+                                            <!--begin::Overlay-->
+                                            <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/stock/600x400/img-23.jpg">
+                                                <!--begin::Image-->
+                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" >
+                                                    <img src="http://localhost:8089/SpringMVC/files/{{user.fileDB?.id}}"class="h-75 align-self-end" alt="" />
+
+                                                </div>
+                                                <!--end::Image-->
+                                                <!--begin::Action-->
+                                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                    <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                                </div>
+                                                <!--end::Action-->
+                                            </a>
+                                            <!--end::Overlay-->
+                                            <!--begin::Body-->
+                                            <div class="mt-5">
+                                                <!--begin::Title-->
+                                                <a href="#" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base">{{user.name}}</a>
+                                                <!--end::Title-->
+                                                <!--begin::Text-->
+                                                <div class="fw-bold fs-5 text-gray-600 text-dark mt-3">Eamil : {{user.email}}</div>
+                                                <div class="fw-bold fs-5 text-gray-600 text-dark mt-3">Address : {{user.address}}</div>
+
+                                                <!--end::Text-->
+                                                <!--begin::Text-->
+                                                <div class="fs-6 fw-bolder mt-5 d-flex flex-stack">
+                                                    <!--begin::Label-->
+
+                                                    <!--end::Label-->
+                                                    <!--begin::Action-->
+                                                    <a href="#" class="btn btn-primary">More Offers</a>
+                                                    <!--end::Action-->
+                                                </div>
+                                                <!--end::Text-->
+                                            </div>
+                                        </div>
+                                        <!--end::Hot sales post-->
+                                    </div>
+                                    <!--end::Col-->
+
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--begin::Row-->
+                        </div>
+                        <!--end::Section-->
+                        <!--begin::Section-->
+
+                        <!--end::Section-->
+                        <!--begin::Section-->
+                        <div class="mb-17">
+                            <!--begin::Title-->
+                            <div class="mb-17">
+                                <!--begin::Content-->
+                                <div class="d-flex flex-stack mb-5">
+                                    <!--begin::Title-->
+                                    <h3 class="text-black">Our Offers</h3>
+                                    <!--end::Title-->
+                                    <!--begin::Link-->
+                                    <a href="#" class="fs-6 fw-bold link-primary">View All Offers</a>
+                                    <!--end::Link-->
+                                </div>
+                                <!--end::Content-->
+                                <!--begin::Separator-->
+                                <div class="separator separator-dashed mb-9"></div>
+                                <!--end::Separator-->
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    <!--begin::Col-->
+                                    <div class="col-md-4"  *ngFor="let user of OfferList">
+                                        <!--begin::Hot sales post-->
+                                        <div class="card-xl-stretch me-md-6">
+                                            <!--begin::Overlay-->
+                                            <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/stock/600x400/img-23.jpg">
+                                                <!--begin::Image-->
+                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('assets/media/stock/600x400/img-23.jpg')"></div>
+                                                <!--end::Image-->
+                                                <!--begin::Action-->
+                                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                    <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                                </div>
+                                                <!--end::Action-->
+                                            </a>
+                                            <!--end::Overlay-->
+                                            <!--begin::Body-->
+                                            <div class="mt-5">
+                                                <!--begin::Title-->
+                                                <a href="#" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base">25 Products Mega Bundle with 50% off discount amazing{{user.name}}</a>
+                                                <!--end::Title-->
+                                                <!--begin::Text-->
+                                                <div class="fw-bold fs-5 text-gray-600 text-dark mt-3">We’ve been focused on making a the from also not been eye</div>
+                                                <!--end::Text-->
+                                                <!--begin::Text-->
+                                                <div class="fs-6 fw-bolder mt-5 d-flex flex-stack">
+                                                    <!--begin::Label-->
+                                                    <span class="badge border-dashed fs-2 fw-bolder text-dark p-2">
+																<span class="fs-6 fw-bold text-gray-400">%</span>{{user.percent}}</span>
+                                                    <span class="fs-6 fw-bold text-gray-400">rated by </span>{{user.countUser}}
+                                                    <!--end::Label-->
+                                                    <!--begin::Action-->
+<!--                                                    <span href="#" class="btn btn-primary">rated by {{user.ratingAvg}}</span>-->
+                                                    <div class="rating">
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </div>
+                                                <!--end::Text-->
+                                            </div>
+                                        </div>
+                                        <!--end::Hot sales post-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-4">
+                                        <!--begin::Hot sales post-->
+                                        <div class="card-xl-stretch mx-md-3">
+                                            <!--begin::Overlay-->
+                                            <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/stock/600x600/img-14.jpg">
+                                                <!--begin::Image-->
+                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('assets/media/stock/600x600/img-14.jpg')"></div>
+                                                <!--end::Image-->
+                                                <!--begin::Action-->
+                                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                    <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                                </div>
+                                                <!--end::Action-->
+                                            </a>
+                                            <!--end::Overlay-->
+                                            <!--begin::Body-->
+                                            <div class="mt-5">
+                                                <!--begin::Title-->
+                                                <a href="#" class="fs-4 text-dark fw-bolder text-hover-primary text-dark lh-base">25 Products Mega Bundle with 50% off discount amazing</a>
+                                                <!--end::Title-->
+                                                <!--begin::Text-->
+                                                <div class="fw-bold fs-5 text-gray-600 text-dark mt-3">We’ve been focused on making a the from also not been eye</div>
+                                                <!--end::Text-->
+                                                <!--begin::Text-->
+                                                <div class="fs-6 fw-bolder mt-5 d-flex flex-stack">
+                                                    <!--begin::Label-->
+                                                    <span class="badge border-dashed fs-2 fw-bolder text-dark p-2">
+																<span class="fs-6 fw-bold text-gray-400">%</span>27</span>
+                                                    <!--end::Label-->
+                                                    <!--begin::Action-->
+                                                    <div class="rating">
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                        <div class="rating-label me-2 checked">
+                                                            <i class="bi bi-star-fill fs-5"></i>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </div>
+                                                <!--end::Text-->
+                                            </div>
+                                            <!--end::Body-->
+                                        </div>
+                                        <!--end::Hot sales post-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--begin::Row-->
+                        </div>
+                        <!--end::Section-->
+                        <!--begin::latest instagram-->
+                        <div class="">
+                            <!--begin::Section-->
+                            <div class="m-0">
+                                <!--begin::Content-->
+                                <div class="d-flex flex-stack">
+                                    <!--begin::Title-->
+                                    <h3 class="text-black">Latest Instagram Posts</h3>
+                                    <!--end::Title-->
+                                    <!--begin::Link-->
+                                    <a href="#" class="fs-6 fw-bold link-primary">View Instagram</a>
+                                    <!--end::Link-->
+                                </div>
+                                <!--end::Content-->
+                                <!--begin::Separator-->
+                                <div class="separator separator-dashed border-gray-300 mb-9 mt-5"></div>
+                                <!--end::Separator-->
+                            </div>
+                            <!--end::Section-->
+                            <!--begin::Row-->
+                            <div class="row g-10 row-cols-2 row-cols-lg-5">
+                                <!--begin::Col-->
+                                <div class="col">
+                                    <!--begin::Overlay-->
+                                    <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/demos/demo9.png">
+                                        <!--begin::Image-->
+                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('assets/media/demos/demo9.png')"></div>
+                                        <!--end::Image-->
+                                        <!--begin::Action-->
+                                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                            <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                        </div>
+                                        <!--end::Action-->
+                                    </a>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col">
+                                    <!--begin::Overlay-->
+                                    <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/stock/900x600/32.jpg">
+                                        <!--begin::Image-->
+                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('assets/media/stock/900x600/32.jpg')"></div>
+                                        <!--end::Image-->
+                                        <!--begin::Action-->
+                                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                            <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                        </div>
+                                        <!--end::Action-->
+                                    </a>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col">
+                                    <!--begin::Overlay-->
+                                    <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/demos/demo4.png">
+                                        <!--begin::Image-->
+                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('assets/media/demos/demo4.png')"></div>
+                                        <!--end::Image-->
+                                        <!--begin::Action-->
+                                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                            <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                        </div>
+                                        <!--end::Action-->
+                                    </a>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col">
+                                    <!--begin::Overlay-->
+                                    <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/stock/600x600/img-13.jpg">
+                                        <!--begin::Image-->
+                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('assets/media/stock/600x600/img-13.jpg')"></div>
+                                        <!--end::Image-->
+                                        <!--begin::Action-->
+                                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                            <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                        </div>
+                                        <!--end::Action-->
+                                    </a>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col">
+                                    <!--begin::Overlay-->
+                                    <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="assets/media/stock/600x400/img-52.jpg">
+                                        <!--begin::Image-->
+                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('assets/media/stock/600x400/img-52.jpg')"></div>
+                                        <!--end::Image-->
+                                        <!--begin::Action-->
+                                        <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                            <i class="bi bi-eye-fill fs-2x text-white"></i>
+                                        </div>
+                                        <!--end::Action-->
+                                    </a>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--begin::Row-->
+                        </div>
+                        <!--end::latest instagram-->
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Home card-->
+            </div>
+            <!--end::Post-->
+        </div>
+        <!--end::Content-->
+        <!--begin::Footer-->
+        <!--end::Footer-->
+    </div>
+    <!--end::Wrapper-->
+</div >
+
+<button id="kt_explore_toggle" class="explore-toggle btn btn-sm bg-body btn-color-gray-700 btn-active-primary shadow-sm position-fixed px-5 fw-bolder zindex-2 top-50 mt-10 end-0 transform-90 fs-6 rounded-top-0" title="Explore Metronic" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="hover">
+    <span id="kt_explore_toggle_label">Explore</span>
+</button>
+
+<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+    <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+    <span class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+					<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
+					<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
+				</svg>
+			</span>
+    <!--end::Svg Icon-->
+</div>
+
+<script>var hostUrl = "assets/";</script>
+<!--begin::Javascript-->
+<!--begin::Global Javascript Bundle(used by all pages)-->
+<script src="assets/plugins/global/plugins.bundle.js"></script>
+<script src="assets/js/scripts.bundle.js"></script>
+<!--end::Global Javascript Bundle-->
+<!--begin::Page Vendors Javascript(used by this page)-->
+<script src="assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script>
+<!--end::Page Vendors Javascript-->
+<!--begin::Page Custom Javascript(used by this page)-->
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/modals/create-app.js"></script>
+<script src="assets/js/custom/modals/upgrade-plan.js"></script>
+<!--end::Page Custom Javascript-->
+
+
+
