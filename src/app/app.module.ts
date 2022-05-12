@@ -40,6 +40,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AdvertisingComponent } from './advertisings/advertising/advertising.component';
 import { AdvertisingFormComponent } from './advertisings/advertising-form/advertising-form.component';
 import { EditAdvertisingComponent } from './advertisings/edit-advertising/edit-advertising.component';
@@ -53,7 +54,7 @@ import { DateComComponent } from './date-com/date-com.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LinkedinComponent } from './linkedin/linkedin.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
-// import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     PostDetailsComponent,
     EditPostComponent,
 
+
     AdvertisingComponent,
     AdvertisingFormComponent,
     EditAdvertisingComponent,
@@ -91,6 +93,8 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     LinkedinComponent,
 
 
+
+
   ],
   imports: [
     BrowserModule,
@@ -102,6 +106,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     BrowserAnimationsModule,
   BsDatepickerModule.forRoot(),
     NgxPaginationModule,
+
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
@@ -113,6 +118,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     NgbModule,
 
     Ng2SearchPipeModule
+
 
   ],
   providers: [

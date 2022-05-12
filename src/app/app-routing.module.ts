@@ -50,6 +50,7 @@ const routes: Routes = [
   { path: 'edit-post', component: EditPostComponent },
 
 
+
   {path:'col', component:DateComComponent},
 
   {path:'collaborator', component:CollaboratorComponent},
@@ -71,6 +72,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   { path: 'linkedinLogin', component: LinkedinComponent },
+
+
+
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
