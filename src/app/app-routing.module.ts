@@ -16,7 +16,20 @@ import { ForumComponent } from './forum/forum.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+
+import {CollaboratorComponent} from "./collaborators/collaborator/collaborator.component";
+import {CollaboratorFormComponent} from "./collaborators/collaborator-form/collaborator-form.component";
+import {EditCollaboratorComponent} from "./collaborators/edit-collaborator/edit-collaborator.component";
+import {OffersComponent} from "./offer/offers/offers.component";
+import {OfferFormComponent} from "./offer/offer-form/offer-form.component";
+import {OfferEditComponent} from "./offer/offer-edit/offer-edit.component";
+import {AdvertisingComponent} from "./advertisings/advertising/advertising.component";
+import {AdvertisingFormComponent} from "./advertisings/advertising-form/advertising-form.component";
+import {EditAdvertisingComponent} from "./advertisings/edit-advertising/edit-advertising.component";
+import {DateComComponent} from "./date-com/date-com.component";
+
 import { LinkedinComponent } from './linkedin/linkedin.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -35,14 +48,40 @@ const routes: Routes = [
   { path: 'add-post', component: AddPostComponent },
   { path: 'show-post', component: PostDetailsComponent },
   { path: 'edit-post', component: EditPostComponent },
+
+
+
+  {path:'col', component:DateComComponent},
+
+  {path:'collaborator', component:CollaboratorComponent},
+  {path: 'addCollaborator', component: CollaboratorFormComponent },
+  {path: 'editCollaborator/:idCollaborator/edit', component: EditCollaboratorComponent },
+ // { path: 'RetriveCollaborator/:idCollaborator/view', component: DetailCollaboratorComponent },
+  //{path:'rating', component:RatingComponent},
+  {path:'offer/:idCollaborator', component:OffersComponent},
+  {path:'addOffer/:idCollaborator', component:OfferFormComponent},
+  {path:'editOffer/:idOffer', component:OfferEditComponent},
+
+  {path:'advertising/:idCollaborator',component:AdvertisingComponent},
+  {path:'addAdvert/:idCollaborator',component:AdvertisingFormComponent},
+  {path:'editAdvert/:idAd',component:EditAdvertisingComponent},
+
+
+
+
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
   { path: 'linkedinLogin', component: LinkedinComponent },
-  
+
+
+
+
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
-  
+export class AppRoutingModule {
+
 }

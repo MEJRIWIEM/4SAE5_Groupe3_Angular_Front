@@ -1,0 +1,55 @@
+
+<div class="container">
+    <h1>Edit Offer related to our Collaborator  </h1>
+
+    <a href="#" [routerLink]="['/offer/', idCollaborator]" class="btn btn-primary">Go Back to the list of Offers </a>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">name:</label>
+            <input
+                    formControlName="name"
+                    id="name"
+                    type="text"
+                    [(ngModel)]="offer.name"
+                    class="form-control" >
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                <div *ngIf="f.name.errors?.required">name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="percent">Percent</label>
+            <input
+                    formControlName="percent"
+                    id="percent"
+                    type="text"
+                    [(ngModel)]="offer.percent"
+                    class="form-control">
+
+            <div *ngIf="f.percent.touched && f.percent.invalid" class="alert alert-danger">
+                <div *ngIf="f.percent.errors?.required">percent is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="typeOffer">Type of Offer</label>
+            <input
+                    formControlName="typeOffer"
+                    id="typeOffer"
+                    type="typeAd"
+                    [(ngModel)]="offer.typeOffer"
+                    class="form-control">
+
+            <div *ngIf="f.typeOffer.touched && f.typeOffer.invalid" class="alert alert-danger">
+                <div *ngIf="f.email.errors?.required">email is required.</div>
+            </div>
+        </div>
+
+
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>
+
+

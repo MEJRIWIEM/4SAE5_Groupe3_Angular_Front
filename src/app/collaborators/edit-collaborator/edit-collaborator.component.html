@@ -1,0 +1,88 @@
+<div class="container">
+    <h1>Update the informations of Collaborators {{collaborator.name}}</h1>
+
+    <a href="#" routerLink="/collaborator" class="btn btn-primary ">Go back to the list of Collaborators</a>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">name:</label>
+            <input
+                    formControlName="name"
+                    id="name"
+                    type="text"
+                    [(ngModel)]="collaborator.name"
+                    class="form-control" >
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                <div *ngIf="f.name.errors?.required">name is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+                    formControlName="email"
+                    id="email"
+                    type="email"
+                    [(ngModel)]="collaborator.email"
+                    class="form-control">
+
+            <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+                <div *ngIf="f.email.errors?.required">email is required.</div>
+            </div>
+            <div *ngIf="f.email.errors?.required">email is required.</div>
+            <div *ngIf="f.email.errors?.email">
+                Email must be a valid email address
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input
+                    formControlName="address"
+                    id="address"
+                    type="text"
+                    [(ngModel)]="collaborator.address"
+                    class="form-control">
+
+            <div *ngIf="f.address.touched && f.address.invalid" class="alert alert-danger">
+                <div *ngIf="f.address.errors?.required">address is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="typeCollaborator">Type of Collaborator</label>
+            <input
+                    formControlName="typeCollaborator"
+                    id="typeCollaborator"
+                    type="text"
+                    [(ngModel)]="collaborator.typeCollaborator"
+                    class="form-control">
+
+            <div *ngIf="f.typeCollaborator.touched && f.typeCollaborator.invalid" class="alert alert-danger">
+                <div *ngIf="f.typeCollaborator.errors?.required">typeCollaborator is required.</div>
+            </div>
+        </div>
+
+
+        <div *ngIf="message" class="alert_update">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{message}}
+        </div>
+
+        <div class="center gray-bg">
+            <label class="btn btn-default p-0">
+                <input type="file" (change)="selectFile($event)" />
+            </label>
+        </div>
+        <div class="center">
+            <button class="btn btn-primary align-self-center" [disabled]="!selectedFiles" (click)="upload()">
+                Upload
+            </button>
+
+
+
+
+
+        </div>
+
+        <button class="btn btn-primary pull-right" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

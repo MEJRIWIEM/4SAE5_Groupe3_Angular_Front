@@ -1,0 +1,56 @@
+<p>offer-form works!</p>
+<div class="container">
+    <h1 >Create New Offer</h1>
+<!--    <form [formGroup]="form">-->
+<!--        <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>-->
+<!--        <div>Rating: {{form.value}}</div>-->
+<!--        &lt;!&ndash;             <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>&ndash;&gt;-->
+<!--    </form>-->
+
+    <a href="#" [routerLink]="['/offer/', id]" class="btn btn-primary">Go Back to the list of Offers</a>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">name:</label>
+            <input
+                    formControlName="name"
+                    id="name"
+                    type="text"
+                    class="form-control" >
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                <div *ngIf="f.name.errors?.required">name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="percent">percent</label>
+            <input
+                    formControlName="percent"
+                    id="percent"
+                    type="text"
+                    class="form-control">
+
+            <div *ngIf="f.percent.touched && f.percent.invalid" class="alert alert-danger">
+                <div *ngIf="f.percent.errors?.required">percent is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="typeOffer">typeOffer</label>
+            <input
+                    formControlName="typeOffer"
+                    id="typeOffer"
+                    type="text"
+                    class="form-control">
+
+            <div *ngIf="f.typeOffer.touched && f.typeOffer.invalid" class="alert alert-danger">
+                <div *ngIf="f.email.errors?.required">email is required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">add offer</button>
+
+
+    </form>
+</div>
+

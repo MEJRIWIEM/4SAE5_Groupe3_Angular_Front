@@ -1,0 +1,99 @@
+
+<div class="container">
+    <h1>Create New Post</h1>
+
+    <a href="#" routerLink="/" class="btn btn-primary">Go Back to the list of Advertisings</a>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">name:</label>
+            <input
+                    formControlName="name"
+                    id="name"
+                    type="text"
+                    [(ngModel)]="ads.name"
+                    class="form-control" >
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                <div *ngIf="f.name.errors?.required">name is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cost">Cost</label>
+            <input
+                    formControlName="cost"
+                    id="cost"
+                    type="text"
+                    [(ngModel)]="ads.cost"
+                    class="form-control">
+
+            <div *ngIf="f.cost.touched && f.cost.invalid" class="alert alert-danger">
+                <div *ngIf="f.cost.errors?.required">cost is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="typeAd">typeAd</label>
+            <input
+                    formControlName="typeAd"
+                    id="typeAd"
+                    type="typeAd"
+                    [(ngModel)]="ads.typeAd"
+                    class="form-control">
+
+            <div *ngIf="f.typeAd.touched && f.typeAd.invalid" class="alert alert-danger">
+                <div *ngIf="f.email.errors?.required">email is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="targetNbrViews">targetNbrViews</label>
+            <input
+                    formControlName="targetNbrViews"
+                    id="targetNbrViews"
+                    type="text"
+                    [(ngModel)]="ads.targetNbrViews"
+                    class="form-control">
+
+            <div *ngIf="f.targetNbrViews.touched && f.targetNbrViews.invalid" class="alert alert-danger">
+                <div *ngIf="f.targetNbrViews.errors?.required">targetNbrViews is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="finalNbrViews">finalNbrViews</label>
+            <input
+                    formControlName="finalNbrViews"
+                    id="finalNbrViews"
+                    type="text"
+                    [(ngModel)]="ads.finalNbrViews"
+                    class="form-control">
+
+            <div *ngIf="f.finalNbrViews.touched && f.finalNbrViews.invalid" class="alert alert-danger">
+                <div *ngIf="f.finalNbrViews.errors?.required">finalNbrViews is required.</div>
+            </div>
+        </div>
+        <div *ngIf="message" class="alert_update">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{message}}
+        </div>
+
+        <div class="center gray-bg">
+            <label class="btn btn-default p-0">
+                <input type="file" (change)="selectFile($event)" />
+            </label>
+        </div>
+        <div class="center">
+            <button class="btn btn-primary align-self-center" [disabled]="!selectedFiles" (click)="upload()">
+                Upload
+            </button>
+
+
+
+
+
+        </div>
+
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>
+
