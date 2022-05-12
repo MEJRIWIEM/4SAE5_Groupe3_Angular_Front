@@ -52,7 +52,8 @@ import { OfferEditComponent } from './offer/offer-edit/offer-edit.component';
 import { DateComComponent } from './date-com/date-com.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LinkedinComponent } from './linkedin/linkedin.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+// import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
