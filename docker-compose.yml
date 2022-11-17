@@ -1,17 +1,19 @@
 # Frontend Service
-app-client:
-  build:
-    context: client # Use an image built from the specified dockerfile in the `client` directory.
-    dockerfile: Dockerfile
-  ports:
-    - "4200:80" # Map the exposed port 80 on the container to port 4200 on the host machine
-  restart: always
-  depends_on:
-    - app-server
-  networks:
-    - frontend
-  volumes:
-    - db:/var/lib/angular
+version: '3.3' # We use version 3.5 syntax
+services: # Here we define our service(s)
+  angular-service: # The name of the service
+    image: angularproject
+    container_name: angularcontainer  # Container name
+    build: ./4SAE5_Groupe3_Frontend # Location of our Dockerfile
+    volumes: # Volume binding
+      - './4SAE5_Groupe3_Frontend:/usr/src/app'
+    ports:
+      - '4200:4200' # Port mapping
+    command: >
+      bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
 
-volumes:
-    db:
+
+
+
+
+
